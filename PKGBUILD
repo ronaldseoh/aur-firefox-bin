@@ -1,13 +1,14 @@
-# Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Maintainer: Alad Wenter <alad@archlinux.org>
+# Contributor: Luna Jernberg <droidbittin@gmail.com>
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 # Contributor: Simon Brulhart <simon@brulhart.me>
 # Contributor: Det <nimetonmaili g-mail>, Achilleas Pipinellis, speed145a, Schnouki, aus
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=96.0.2
+pkgver=97.0.2
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
+pkgdesc="Standalone web browser from mozilla.org - Static binaries from upstream"
 arch=('x86_64')
 url="https://www.mozilla.org/en-US/firefox/new/"
 license=(MPL GPL LGPL)
@@ -20,10 +21,10 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-source=(https://archive.mozilla.org/pub/firefox/releases/96.0.2/linux-x86_64/en-US/firefox-96.0.2.tar.bz2
+source=("https://archive.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('ae8aad9fddd1e3b28da71a0811eda5dff49593371d5e3f6b8852835bdf43bced'
+sha256sums=('ad296c84895b006ba555ab2cf88bdbe5c38f759dc3de3285160851a951017c70'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -56,6 +57,5 @@ package() {
   ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
 
   # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
+  #ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
 }
-
